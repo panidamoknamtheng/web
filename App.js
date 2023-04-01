@@ -5,8 +5,9 @@ import { firebase } from './config';
 
 import Login from './src/Login';
 import Registration from './src/Registration';
-import Dashboard from './src/Dashboard';
+import Dashboard from './src/views/screens/HomeScreen';
 import Header from './components/Header';
+
 
 const stack = createStackNavigator();
 
@@ -65,20 +66,7 @@ function App() {
   return (
   <stack.Navigator>
     <stack.Screen
-          name="Dashboard" component={Dashboard}
-          options={{
-            headerTitle: () => <Header name="Dashboard"/>,
-            headerStyle: {
-              height:150,
-              borderBottomLeftRadius:50,
-              borderBottomRightRadius:50,
-              backgroundColor:'#00e4d0',
-              shadowColor: '#000',
-              elevation:25
-              
-            }
-          }}
-        />
+          name="Dashboard" component={Dashboard}/>
   </stack.Navigator>
   );
 }
