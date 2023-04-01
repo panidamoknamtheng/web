@@ -1,20 +1,93 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import React, { useState, useEffect, Suspense } from "react";
+import { firebase } from './config';
 
-export default function App() {
+import Login from './src/Login';
+import Registration from './src/Registration';
+import Dashboard from './src/Dashboard';
+import Header from './components/Header';
+
+const stack = createStackNavigator();
+
+function App() {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
+  if (initializing) return null;
+
+  if (!user){
+    return (
+      <stack.Navigator>
+        <stack.Screen
+          name="Login" component={Login}
+          options={{
+            headerTitle: () => <Header name="CuctusShop"/>,
+            headerStyle: {
+              height:150,
+              borderBottomLeftRadius:50,
+              borderBottomRightRadius:50,
+              backgroundColor:'#00e4d0',
+              shadowColor: '#000',
+              elevation:25
+              
+            }
+          }}
+        />
+        <stack.Screen
+          name="Registration" component={Registration}
+          options={{
+            headerTitle: () => <Header name="CuctusShop"/>,
+            headerStyle: {
+              height:150,
+              borderBottomLeftRadius:50,
+              borderBottomRightRadius:50,
+              backgroundColor:'#00e4d0',
+              shadowColor: '#000',
+              elevation:25
+              
+            }
+          }}
+        />
+      </stack.Navigator>
+    );
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  <stack.Navigator>
+    <stack.Screen
+          name="Dashboard" component={Dashboard}
+          options={{
+            headerTitle: () => <Header name="Dashboard"/>,
+            headerStyle: {
+              height:150,
+              borderBottomLeftRadius:50,
+              borderBottomRightRadius:50,
+              backgroundColor:'#00e4d0',
+              shadowColor: '#000',
+              elevation:25
+              
+            }
+          }}
+        />
+  </stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default () => {
+  return (
+    <NavigationContainer>
+        <App />
+      
+    </NavigationContainer>
+  )
+}
