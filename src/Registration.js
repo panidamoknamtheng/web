@@ -41,8 +41,8 @@ const Registration = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={{fontWeight:'bold', 'fontSize':23}}>
-                Register Here..!!
+            <Text style={{fontWeight:'bold', 'fontSize':28}}>
+                สมัครสมาชิก CuctusShop
             </Text>
             <View style={{marginTop:40}}>
                 <TextInput
@@ -60,14 +60,15 @@ const Registration = () => {
                 <TextInput
                 style={styles.textInput}
                 placeholder="Email"
-                onChangeText={(email) => setLastName(email)}
+                onChangeText={(email) => setEmail(email)}
+                autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="email-address"
                 />
                 <TextInput
                 style={styles.textInput}
                 placeholder="Password"
-                onChangeText={(password) => setLastName(password)}
+                onChangeText={(password) => setPassword(password)}
                 autoCapitalize="none"
                 autoCorrect={false}
                 secureTextEntry={true}
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
         marginTop:50,
         height:70,
         width:250,
-        backgroundColor: '#026efd',
+        backgroundColor: '#72d572',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius:50,
