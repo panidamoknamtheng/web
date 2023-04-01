@@ -7,6 +7,21 @@ import { firebase } from '../config'
 const Dashboard = () => {
     const [name, setName] = useState('')
 
+
+    // change password
+    const changePassword = () => {
+        firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser.email)
+            .then(() => {
+                alert("Password reset email sent")
+            }).catch((error) => {
+                alert(error)
+            })
+
+    }
+
+
+
+
     useEffect(() => {
         firebase.firestore().collection('users')
             .doc(firebase.auth().currentUser.uid).get()
@@ -26,7 +41,17 @@ const Dashboard = () => {
                 Hello, {name.firstName}
             </Text>
             <TouchableOpacity
-                onPress={() => {firebase.auth().signOut()}}
+                onPress={() => {
+                    changePassword()
+                }}
+                style={styles.button}
+            >
+                <Text style={{ fontSize: 22, fontWeight: 'bold' }}>
+                    change Password
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => { firebase.auth().signOut() }}
                 style={styles.button}
 
             >
@@ -44,17 +69,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        marginTop:100,
+        marginTop: 100,
     },
-    
-    button:{
-        marginTop:50,
-        height:70,
-        width:250,
+
+    button: {
+        marginTop: 50,
+        height: 70,
+        width: 300,
         backgroundColor: '#026efd',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius:50,
+        borderRadius: 50,
+        
 
 
     }

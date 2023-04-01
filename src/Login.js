@@ -18,6 +18,17 @@ const Login = () => {
         }
     }
 
+    //forget password
+    const forgetPassword = () => {
+        firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+            alert("Password reset email sent")
+        }).catch((error) => {
+            alert(error)
+        })
+
+    }
+
     return (
         <View style={styles.container}>
             <Text style={{ fontWeight: 'bold', fontSize: 26 }}>
@@ -59,6 +70,15 @@ const Login = () => {
                     </Text>
 
             </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => {forgetPassword()}}
+                style={{marginTop:20}}
+            >
+                <Text style={{fontWeight:'bold', fontSize:16}}>
+                    Forget Password?
+                    </Text>
+
+            </TouchableOpacity>
         </View >
 
     )
@@ -83,7 +103,7 @@ const styles = StyleSheet.create({
         textAlign:'center'
     },
     button:{
-        marginTop:50,
+        marginTop:80,
         height:70,
         width:250,
         backgroundColor: '#026efd',
