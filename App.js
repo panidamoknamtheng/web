@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useState, useEffect, Suspense } from "react";
 import { firebase } from './config';
+import LoginScreen from "./src/LoginOtp";
 
 import Login from './src/Login';
 import Registration from './src/Registration';
@@ -47,6 +48,21 @@ function App() {
         />
         <stack.Screen
           name="Registration" component={Registration}
+          options={{
+            headerTitle: () => <Header name="CuctusShop"/>,
+            headerStyle: {
+              height:150,
+              borderBottomLeftRadius:50,
+              borderBottomRightRadius:50,
+              backgroundColor:'#00e4d0',
+              shadowColor: '#000',
+              elevation:25
+              
+            }
+          }}
+        />
+        <stack.Screen
+          name="LoginOtp" component={LoginScreen}
           options={{
             headerTitle: () => <Header name="CuctusShop"/>,
             headerStyle: {

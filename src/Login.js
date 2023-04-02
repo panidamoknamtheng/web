@@ -61,6 +61,15 @@ const Login = () => {
                 <Text style={{fontWeight:'bold', fontSize:22}}>Login</Text>
 
             </TouchableOpacity>
+            
+            <TouchableOpacity
+                onPress={() => navigation.navigate('LoginOtp')}
+                style={styles.button}
+            >
+                <Text style={{fontWeight:'bold', fontSize:22}}>Login With Otp</Text>
+
+            </TouchableOpacity>
+
             <TouchableOpacity
                 onPress={() => navigation.navigate('Registration')}
                 style={{marginTop:20}}
@@ -103,13 +112,13 @@ const styles = StyleSheet.create({
         textAlign:'center'
     },
     button:{
-        marginTop:80,
-        height:70,
+        marginTop:50,
+        height:40,
         width:250,
         backgroundColor: '#026efd',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius:50,
+        borderRadius:10,
 
 
     }
