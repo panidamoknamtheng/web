@@ -39,11 +39,11 @@ const DetailsScreen = ({navigation, route}) => {
             </View>
           </View>
           <Text style={style.detailsText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries.
+            การปลูกกระบองเพชร/แคคตัส
+            กระบองเพชรส่วนมากเป็นพืชที่ไม่ชอบน้ำมาก และมักขึ้นในสภาพดินที่แห้งแล้ง 
+            ทั้งพบได้ตามป่าเขา ทะเลทราย ทุ่งหญ้า ซึ่งชอบดินร่วน 
+            ดินร่วนปนทรายที่สามารถระบายน้ำได้ดี ทำให้กระบองเพชรสามารถปลูกได้
+            ในทุกพื้นที่ที่มีสภาพแห้งแล้งหรือมีสภาพร้อนชื้น
           </Text>
           <View style={{marginTop: 40, marginBottom: 40}}>
             <SecondaryButton title="Add To Cart" />
