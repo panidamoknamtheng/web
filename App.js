@@ -9,6 +9,8 @@ import Registration from "./src/Registration";
 import Dashboard from "./src/views/screens/HomeScreen";
 import Header from "./components/Header";
 import Profile from "./src/Profile";
+import DetailsScreen from "./src/views/screens/DetailsScreen"
+
 
 const stack = createStackNavigator();
 
@@ -97,6 +99,10 @@ function App() {
   return (
     <stack.Navigator>
       <stack.Screen name="Dashboard" component={Dashboard} />
+      <stack.Screen name="Profile" component={Profile} />
+      <stack.Screen name="DetailsScreen" component={DetailsScreen} />
+   
+
     </stack.Navigator>
   );
 }
