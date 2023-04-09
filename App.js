@@ -99,6 +99,9 @@ function App() {
   return (
     <stack.Navigator>
       <stack.Screen name="Dashboard" component={Dashboard} />
+      <stack.Screen name="Profile" component={Profile} />
+      <stack.Screen name="DetailsScreen" component={DetailsScreen} />
+
     </stack.Navigator>
   );
 }
